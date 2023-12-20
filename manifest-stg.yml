@@ -2,7 +2,7 @@
 applications:
   - name: ccte-file-stg
     routes:
-      - route: ccte-file-s.app.cloud.gov
+      #- route: ccte-file-s.app.cloud.gov
       - route: api-ccte-stg.epa.gov/chemical-file
       #- route: ccte-api-s.app.cloud.gov/chemical
     memory: 2G
@@ -10,6 +10,7 @@ applications:
     random-route: false
     path: target/chemical-files.jar
     buildpacks:
-    - https://github.com/cloudfoundry/java-buildpack
+    - java_buildpack
     env:
-      SPRING_PROFILES_ACTIVE: cloud,apikey,stg
+      SPRING_PROFILES_ACTIVE: cloud,stg
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+}}'
